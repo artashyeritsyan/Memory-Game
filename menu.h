@@ -1,70 +1,93 @@
-#ifndef MENU_H
-#define MENU_H
+// #ifndef MENU_H
+// #define MENU_H
 
-#include "gameSizeEnum.h"
 
-#include <QMainWindow>
-#include <QPushButton>
-#include <QVBoxLayout>
-#include <QWidget>
+// #include <QMainWindow>
+// #include <QPushButton>
+// #include <QVBoxLayout>
+// #include <QWidget>
 
-class Menu : public QMainWindow {
-    Q_OBJECT
+// QT_BEGIN_NAMESPACE
+// namespace Ui {
+// class Menu;
+// }
+// QT_END_NAMESPACE
 
-public:
-    Menu(QWidget* parent = nullptr) : QMainWindow(parent) {
+// class Menu : public QMainWindow {
+//     Q_OBJECT
 
-        QWidget* centralWidget = new QWidget(this);
-        setCentralWidget(centralWidget);
+// private:
+//     Ui::Menu *ui;
 
-        QVBoxLayout* layout = new QVBoxLayout(centralWidget);
+// public:
+//     Menu(QWidget* parent = nullptr) : QMainWindow(parent), ui(new Ui::Menu) {
+//         ui->setupUi(this);
 
-        QPushButton* singlePlayerBtn = new QPushButton("Single Player", this);
-        QPushButton* twoPlayerBtn = new QPushButton("Two Player", this);
-        QPushButton* difficultyBtn = new QPushButton("Difficulty", this);
-        QPushButton* scoresBtn = new QPushButton("Scores", this);
-        QPushButton* exitBtn = new QPushButton("Exit", this);
+//         QWidget* centralWidget = new QWidget(this);
+//         setCentralWidget(centralWidget);
 
-        layout->addWidget(singlePlayerBtn);
-        layout->addWidget(twoPlayerBtn);
-        layout->addWidget(difficultyBtn);
-        layout->addWidget(scoresBtn);
-        layout->addWidget(exitBtn);
+//         QVBoxLayout* layout = new QVBoxLayout(centralWidget);
 
-        connect(singlePlayerBtn, &QPushButton::clicked, this, &Menu::startSinglePlayer);
-        connect(twoPlayerBtn, &QPushButton::clicked, this, &Menu::startTwoPlayer);
-        connect(difficultyBtn, &QPushButton::clicked, this, &Menu::showDifficultyMenu);
-        connect(scoresBtn, &QPushButton::clicked, this, &Menu::showScores);
-        connect(exitBtn, &QPushButton::clicked, this, &Menu::exitGame);
-    }
+//         QPushButton* singlePlayerBtn = new QPushButton("Single Player", this);
+//         QPushButton* twoPlayerBtn = new QPushButton("Two Player", this);
+//         QPushButton* difficultyBtn = new QPushButton("Difficulty", this);
+//         QPushButton* scoresBtn = new QPushButton("Scores", this);
+//         QPushButton* exitBtn = new QPushButton("Exit", this);
 
-signals:
-    void singlePlayerSelected();
-    void twoPlayerSelected();
-    void difficultySelected();
-    void scoresSelected();
-    void exitSelected();
+//         layout->addWidget(singlePlayerBtn);
+//         layout->addWidget(twoPlayerBtn);
+//         layout->addWidget(difficultyBtn);
+//         layout->addWidget(scoresBtn);
+//         layout->addWidget(exitBtn);
 
-private slots:
-    void startSinglePlayer() {
-        emit singlePlayerSelected();
-    }
+//         connect(singlePlayerBtn, &QPushButton::clicked, this, &Menu::startSinglePlayer);
+//         connect(twoPlayerBtn, &QPushButton::clicked, this, &Menu::startTwoPlayer);
+//         connect(difficultyBtn, &QPushButton::clicked, this, &Menu::showDifficultyMenu);
+//         connect(scoresBtn, &QPushButton::clicked, this, &Menu::showScores);
+//         connect(exitBtn, &QPushButton::clicked, this, &Menu::exitGame);
+//     }
 
-    void startTwoPlayer() {
-        emit twoPlayerSelected();
-    }
+// signals:
+//     void singlePlayerSelected();
+//     void twoPlayerSelected();
+//     void difficultySelected();
+//     void scoresSelected();
+//     void exitSelected();
 
-    void showDifficultyMenu() {
-        emit difficultySelected();
-    }
+// private slots:
 
-    void showScores() {
-        emit scoresSelected();
-    }
+//     void on_TwoPlayerBtn_clicked() {
+//         for (int i = 0; i < ui->MenuLayout->count(); ++i) {
+//             auto item = ui->MenuLayout->itemAt(i);
+//             item->widget()->hide();
+//         }
 
-    void exitGame() {
-        emit exitSelected();
-    }
-};
+//         // gameStartFunction()
+//     }
 
-#endif // MENU_H
+//     void on_SinglePlayerBtn_clicked() {
+
+//     }
+
+//     void startSinglePlayer() {
+//         emit singlePlayerSelected();
+//     }
+
+//     void startTwoPlayer() {
+//         emit twoPlayerSelected();
+//     }
+
+//     void showDifficultyMenu() {
+//         emit difficultySelected();
+//     }
+
+//     void showScores() {
+//         emit scoresSelected();
+//     }
+
+//     void exitGame() {
+//         emit exitSelected();
+//     }
+// };
+
+// #endif // MENU_H

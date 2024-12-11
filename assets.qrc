@@ -1,0 +1,39 @@
+<RCC>
+    <qresource prefix="/XmasPictures">
+        <file>Assets/advent-calendar/Xmas_0.png</file>
+        <file>Assets/advent-calendar/Xmas_1.png</file>
+        <file>Assets/advent-calendar/Xmas_2.png</file>
+        <file>Assets/advent-calendar/Xmas_3.png</file>
+        <file>Assets/advent-calendar/Xmas_4.png</file>
+        <file>Assets/advent-calendar/Xmas_5.png</file>
+        <file>Assets/advent-calendar/Xmas_6.png</file>
+        <file>Assets/advent-calendar/Xmas_7.png</file>
+        <file>Assets/advent-calendar/Xmas_8.png</file>
+        <file>Assets/advent-calendar/Xmas_9.png</file>
+        <file>Assets/advent-calendar/Xmas_10.png</file>
+        <file>Assets/advent-calendar/Xmas_11.png</file>
+        <file>Assets/advent-calendar/Xmas_12.png</file>
+        <file>Assets/advent-calendar/Xmas_13.png</file>
+        <file>Assets/advent-calendar/blows.png</file>
+    </qresource>
+    <qresource prefix="/Backgrounds">
+        <file>Assets/xmas_gui/PNG/xmas_background.png</file>
+        <file>Assets/xmas_gui/PNG/Level_Completed/Window.png</file>
+    </qresource>
+    <qresource prefix="/Buttons/Xmas">
+        <file>Assets/xmas_gui/PNG/Buttons/BTN_Red.png</file>
+        <file>Assets/xmas_gui/PNG/Buttons/BTN_Red_01.png</file>
+        <file>Assets/xmas_gui/PNG/Buttons/BTN_Red_07.png</file>
+        <file>Assets/xmas_gui/PNG/Game_Paused/Music_BTN.png</file>
+        <file>Assets/xmas_gui/PNG/Game_Paused/Quit_BTN.png</file>
+        <file>Assets/xmas_gui/PNG/Game_Paused/Resume_BTN.png</file>
+        <file>Assets/xmas_gui/PNG/Game_Paused/Sound_BTN.png</file>
+        <file>Assets/xmas_gui/Exit.png</file>
+        <file>Assets/xmas_gui/SinglePlayer.png</file>
+        <file>Assets/xmas_gui/TwoPlayer.png</file>
+    </qresource>
+    <qresource prefix="/Buttons">
+        <file>Assets/images/icons8-music-96.png</file>
+        <file>Assets/images/icons8-sound-100.png</file>
+    </qresource>
+</RCC>

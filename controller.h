@@ -2,31 +2,34 @@
 #define CONTROLLER_H
 
 #include "board.h"
-#include "menu.h"
-#include "screen.h"
+#include "mainwindow.h"
 
 #include <QDebug>
 
 class Controller : public QObject {
     Q_OBJECT
+
 public:
-    Controller(QObject* parent = nullptr);
+    Controller();
     void start();
 
 private slots:
-    void startSinglePlayer() {
-        qDebug() << "Single Player button clicked!";
-        board.
-    };
-    void startTwoPlayer() {qDebug() << "Two Player button clicked!";};
-    void showDifficultyMenu(){qDebug() << "Difficulty button clicked!";};
-    void showScores(){ qDebug() << "Scores button clicked!";};
-    void exitGame(){qDebug() << "Exit button clicked!";};
+    void parseStartCommand(EGameMode gameMode, EGameSize gameSize);
+    void handleClick(int buttonIndex);
+    void handleScreenUpdateRequest();
+
+    void handleCooldown();
 
 private:
-    Board* board;
-    Menu* menu;
-    Screen* screen;
+    void startSinglePlayer();
+
+private:
+    EGameMode _gameMode;
+    int _height;
+    int _width;
+
+    Board* _board;
+    MainWindow* _window;
 };
 
 #endif // CONTROLLER_H

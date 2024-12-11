@@ -3,18 +3,36 @@
 
 #include "card.h"
 
+#include <random>
+#include <QTimer>
 #include <QVector>
+#include <QMainWindow>
+
 
 class Board
 {
 public:
-    Board();
+    Board(int height, int width);
     void updateBoard();
-    void checkCard(int index);
+    bool checkCard(int index);
+    QVector<Card> getTable();
+
+// signals:
+//     void waitCardCooldown();
+
+private:
+    void shufflePictures();
 
 private:
     QVector<Card> _table;
     int _firstChosenCardIndex;
+
+    int _score = 0;
+    int _steps = 0;
+    int cooldownTime = 900;
+    QTimer _timer;
+
+    int _size;
 };
 
 #endif // BOARD_H
