@@ -24,23 +24,3 @@
 //     connect(scoresBtn, &QPushButton::clicked, this, &Menu::showScores);
 //     connect(exitBtn, &QPushButton::clicked, this, &Menu::exitGame);
 // }
-
-// void Menu::startSinglePlayer() {
-//     emit singlePlayerSelected();
-// }
-
-// void Menu::startTwoPlayer() {
-//     emit twoPlayerSelected();
-// }
-
-// void Menu::showDifficultyMenu() {
-//     emit difficultySelected();
-// }
-
-// void Menu::showScores() {
-//     emit scoresSelected();
-// }
-
-// void Menu::exitGame() {
-//     emit exitSelected();
-// }

@@ -21,18 +21,21 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void gameStartFunction();
     void setGameSize(int height, int width);
     void initializeButtons(QVector<Card> table);
-    void gameStartFunction();
     void updateGameScreen(QVector<Card> table);
-
     void cardResetCooldown();
+
+    void updateStepsAndScore(int steps, int score);
+    void uupdateScore(int score);
+
 
 private slots:
     // Menu buttons
+    void on_SinglePlayerBtn_clicked();
     void on_TwoPlayerBtn_clicked();
     void on_ExitButton_clicked();
-    void on_SinglePlayerBtn_clicked();
 
     // Size choosing buttons
     void initGameSizeButtons();
@@ -40,39 +43,40 @@ private slots:
     void on_BackFromSizeMenu_clicked();
 
     // Game buttons
-    void on_anyButton_clicked(bool checked);
-    int findButtonIndex(QPushButton* button);
-
+    void onAnyButtonClicked(bool checked);
     void on_HomeButton_clicked();
+    void on_RestartButton_clicked();
+
 
 signals:
     void startGame(EGameMode gameMode, EGameSize gameSize);
+    void restartGame();
     void buttonClicked(int buttonIndex);
-    void exitSelected();
-    // void twoPlayerSelected();
 
     void requestScreenUpdate();
 
 private:
+    void create_layout();
+    void updateTime();
+
+    void disableAllButtons();
+    void enableAllButtons();
+
     void hideMenuButtons();
     void showMenuButtons();
 
     void hideGameSizeMenu();
     void showGameSizeMenu();
 
-    void choose_card(int index);
-    void compare_cards(int index_1, int index_2);
-    void random_card_generation();
-    void create_layout();
-    void updateTime();
-    void endGame();
+    void hideInfoBoard();
+    void showInfoBoard();
+    // useless function
+    void hideWidgetsInLayout(QLayout *layout, bool isHide = true);
 
-    void disableAllButtons();
-    void enableAllButtons();
-
+    int findButtonIndex(QPushButton* button);
     void removeGameWidgets();
-
     void exitToMenu();
+    void endGame();
 
     // void connectSizeMenuButtons();
 

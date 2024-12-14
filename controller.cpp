@@ -7,22 +7,22 @@
 Controller::Controller() {
     _window = new MainWindow();
 
-    connect(_window, &MainWindow::startGame, this, &Controller::parseStartCommand);
+    connect(_window, &MainWindow::startGame, this, &Controller::handleStartCmd);
+    connect(_window, &MainWindow::restartGame, this, &Controller::handleGameRestartCmd);
     connect(_window, &MainWindow::buttonClicked, this, &Controller::handleClick);
     connect(_window, &MainWindow::requestScreenUpdate, this, &Controller::handleScreenUpdateRequest);
 
     _window->show();
 
     // connect(_board, &Board::waitForCooldown, this, &Controller::handleCooldown);
-}
-
-void Controller::start()
-{
-
+    // connect(_board, &Board::sendSteps, this, &Controller::updateStepsValue);
 }
 
 void Controller::startSinglePlayer()
 {
+    // if (_board != nullptr) {
+    //     delete _board;
+    // }
     _board = new Board(_height, _width);
 
     // connect(_board, &Board::waitCardCooldown, this, &Controller::handleCooldown);
@@ -32,7 +32,7 @@ void Controller::startSinglePlayer()
     _window->gameStartFunction();
 }
 
-void Controller::parseStartCommand(EGameMode gameMode, EGameSize gameSize)
+void Controller::handleStartCmd(EGameMode gameMode, EGameSize gameSize)
 {
     switch (gameSize)
     {
@@ -62,20 +62,32 @@ void Controller::parseStartCommand(EGameMode gameMode, EGameSize gameSize)
     }
 
     _gameMode = gameMode;
-    // if (gameMode == ...
+    if (_gameMode == EGameMode::SINGLEPLAYER) {
+        startSinglePlayer();
+    }
+    else {
 
-    startSinglePlayer();
+    }
+}
+
+void Controller::handleGameRestartCmd()
+{
+    if (_gameMode == EGameMode::SINGLEPLAYER) {
+        startSinglePlayer();
+    }
+    else {
+
+    }
 }
 
 void Controller::handleClick(int buttonIndex)
 {
-    qDebug() << "handleClick works!!";
-
-
     if (_board->checkCard(buttonIndex)) {
         _window->cardResetCooldown();
+
     }
-    // _window->updateGameScreen(_board->getTable());
+    _window->updateStepsAndScore(_board->getSteps(), _board->getScore());
+
 }
 
 void Controller::handleScreenUpdateRequest()

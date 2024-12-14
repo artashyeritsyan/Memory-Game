@@ -5,18 +5,18 @@
 
 namespace {
 QString buttonStyleSheet = R"(QPushButton {
-                           background-color: rgb(220, 20, 20);
-border: 8px solid rgb(170, 20, 20);
-color: rgb(255, 255, 255);
-border-radius: 15px;
-border-bottom: 8px solid rgb(120, 20, 20);
-border-right: 8px solid rgb(120, 20, 20);
+    background-color: rgb(220, 20, 20);
+    border: 8px solid rgb(170, 20, 20);
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+    border-bottom: 8px solid rgb(120, 20, 20);
+    border-right: 8px solid rgb(120, 20, 20);
 }
 
 QPushButton:hover {
     background-color: rgb(200, 0, 0);
-border: 8px solid rgb(150, 0, 0);
-color: rgb(255, 255, 255);
+    border: 8px solid rgb(150, 0, 0);
+    color: rgb(255, 255, 255);
     border-radius: 15px;
     border-bottom: 8px solid rgb(100, 0, 0);
     border-right: 8px solid rgb(100, 0, 0);
@@ -27,8 +27,8 @@ color: rgb(255, 255, 255);
 
 QPushButton:pressed {
     background-color: rgb(150, 0, 0);
-border: 8px solid rgb(120, 0, 0);
-color: rgb(255, 255, 255);
+    border: 8px solid rgb(120, 0, 0);
+    color: rgb(255, 255, 255);
     border-radius: 15px;
     border-bottom: 6px solid rgb(90, 0, 0);
     border-right: 6px solid rgb(90, 0, 0);
@@ -43,11 +43,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    steps = 0;
-
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::updateTime);
-    ui->timeBoard->setText("Time: " + QString::number(elapsedTime) + "s");
+    ui->timeBoard->setText(" Time: " + QString::number(elapsedTime) + "s");
 
     initGameSizeButtons();
     // connectSizeMenuButtons();
@@ -59,6 +57,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     hideGameSizeMenu();
+    hideInfoBoard();
 
 }
 
@@ -75,7 +74,7 @@ void MainWindow::initializeButtons(QVector<Card> table)
         button->setFlat(true);
         button->setCheckable(true);
 
-        connect(button, &QPushButton::clicked, this, &MainWindow::on_anyButton_clicked);
+        connect(button, &QPushButton::clicked, this, &MainWindow::onAnyButtonClicked);
 
         _buttons.push_back(button);
     }
@@ -95,12 +94,18 @@ void MainWindow::setGameSize(int height, int width)
 }
 
 void MainWindow::gameStartFunction() {
-    // random_card_generation();
+    hideGameSizeMenu();
+    hideMenuButtons();
+    showInfoBoard();
+    ui->GameNameLabel->hide();
+    ui->widgets_frame->setStyleSheet("QFrame {background-color: qradialgradient(spread:pad, cx:0.2, cy:0.2, radius:0.477, fx:0.499775, fy:0.5, stop:0 rgba(1, 131, 165, 255), stop:0.99061 rgba(0, 103, 129, 255)); border-radius: 25px;  }");
 
-    ui->scoreBoard->setText("Score: " + QString::number(score));
-    ui->stepsBoard->setText("Steps: " + QString::number(steps));
+    ui->scoreBoard->setText(" Score: " + QString::number(score));
+    ui->stepsBoard->setText(" Steps: " + QString::number(steps));
 
     timer->start(1000);
+    elapsedTime = -1;
+    updateTime();
 }
 
 void MainWindow::updateGameScreen(QVector<Card> table)
@@ -133,8 +138,12 @@ void MainWindow::cardResetCooldown()
                     emit this->requestScreenUpdate();
                 }
             });
+}
 
-
+void MainWindow::updateStepsAndScore(int steps, int score)
+{
+    ui->scoreBoard->setText(" Score: " + QString::number(score));
+    ui->stepsBoard->setText(" Steps: " + QString::number(steps));
 }
 
 void MainWindow::create_layout() {
@@ -155,7 +164,7 @@ void MainWindow::create_layout() {
     }
 }
 
-void MainWindow::on_anyButton_clicked(bool checked) {
+void MainWindow::onAnyButtonClicked(bool checked) {
     QPushButton* button = qobject_cast<QPushButton*>(sender());
     if(!checked) {
         button->setChecked(true);
@@ -258,7 +267,7 @@ int MainWindow::findButtonIndex(QPushButton *button)
 
 void MainWindow::updateTime() {
     ++elapsedTime;
-    ui->timeBoard->setText("Time: " + QString::number(elapsedTime) + "s");
+    ui->timeBoard->setText(" Time: " + QString::number(elapsedTime) + "s");
 }
 
 void MainWindow::endGame() {
@@ -300,8 +309,11 @@ void MainWindow::removeGameWidgets()
 
 void MainWindow::exitToMenu()
 {
+    ui->widgets_frame->setStyleSheet("");
     removeGameWidgets();
+    hideInfoBoard();
     showMenuButtons();
+    ui->GameNameLabel->show();
 }
 
 
@@ -325,8 +337,8 @@ void MainWindow::showMenuButtons()
 void MainWindow::on_SinglePlayerBtn_clicked()
 {
     hideMenuButtons();
-    _gameMode = EGameMode::SINGLEPLAYER;
     showGameSizeMenu();
+    _gameMode = EGameMode::SINGLEPLAYER;
 
     // gameStartFunction();
 }
@@ -361,8 +373,7 @@ void MainWindow::on_TwoPlayerBtn_clicked()
 
 void MainWindow::on_ExitButton_clicked()
 {
-    // hideMenuButtons();
-    // Exit game
+    exit(0);
 }
 
 
@@ -390,9 +401,9 @@ void MainWindow::onAnyGameSizeButtonClicked()
         }
     }
 
-    hideGameSizeMenu();
+    // hideGameSizeMenu();
+    // showScoreBoard();
     emit startGame(_gameMode, _gameSize);
-        qDebug() << "startGame works!!";
 }
 
 void MainWindow::hideGameSizeMenu()
@@ -424,9 +435,42 @@ void MainWindow::showGameSizeMenu()
     {
         parentWidget->setAttribute(Qt::WA_TransparentForMouseEvents, false);
     }
-
-
 }
+
+void MainWindow::hideInfoBoard()
+{
+    // hideWidgetsInLayout(ui->Info_board_frame, true);
+    ui->Info_board_frame->hide();
+}
+
+void MainWindow::showInfoBoard()
+{
+    // hideWidgetsInLayout(ui->Info_board_frame, false);
+    ui->Info_board_frame->show();
+}
+
+void MainWindow::hideWidgetsInLayout(QLayout *layout, bool isHide)
+{
+    if (!layout) return;
+
+    for (int i = 0; i < layout->count(); ++i) {
+        QLayoutItem *item = layout->itemAt(i);
+        if (!item) continue;
+
+        if (auto widget = item->widget()) {
+            if (isHide) {
+                item->widget()->hide();
+            }
+            else {
+                item->widget()->show();
+            }
+        }
+        else if (auto childLayout = item->layout()) {
+            hideWidgetsInLayout(childLayout, isHide);
+        }
+    }
+}
+
 
 void MainWindow::on_BackFromSizeMenu_clicked()
 {
@@ -438,5 +482,12 @@ void MainWindow::on_BackFromSizeMenu_clicked()
 void MainWindow::on_HomeButton_clicked()
 {
     exitToMenu();
+}
+
+
+void MainWindow::on_RestartButton_clicked()
+{
+    exitToMenu();
+    emit restartGame();
 }
 

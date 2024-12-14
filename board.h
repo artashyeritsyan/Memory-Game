@@ -16,9 +16,12 @@ public:
     void updateBoard();
     bool checkCard(int index);
     QVector<Card> getTable();
+    int getSteps();
+    int getScore();
 
 // signals:
 //     void waitCardCooldown();
+
 
 private:
     void shufflePictures();

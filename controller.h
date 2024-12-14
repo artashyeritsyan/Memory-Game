@@ -11,10 +11,10 @@ class Controller : public QObject {
 
 public:
     Controller();
-    void start();
 
 private slots:
-    void parseStartCommand(EGameMode gameMode, EGameSize gameSize);
+    void handleStartCmd(EGameMode gameMode, EGameSize gameSize);
+    void handleGameRestartCmd(); // write a definiton
     void handleClick(int buttonIndex);
     void handleScreenUpdateRequest();
 
@@ -22,6 +22,7 @@ private slots:
 
 private:
     void startSinglePlayer();
+    void restartGame();
 
 private:
     EGameMode _gameMode;

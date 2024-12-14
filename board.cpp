@@ -13,17 +13,20 @@ Board::Board(int height, int width) : _firstChosenCardIndex(-1)
 
 bool Board::checkCard(int index)
 {
-    qDebug() << "checkCard works!!";
     if (_firstChosenCardIndex == -1) {
         _firstChosenCardIndex = index;
         _table[index].setIsFlipped(true);
     }
     else {
+        ++_steps;
+        // sendSteps()
+
         if (_table[_firstChosenCardIndex].getPictureNumber() == _table[index].getPictureNumber()) {
             _table[_firstChosenCardIndex].setIsGuessed(true);
             _table[index].setIsGuessed(true);
 
             _firstChosenCardIndex = -1;
+            ++_score;
         }
         else {
             _table[_firstChosenCardIndex].setIsGuessed(false);
@@ -48,6 +51,16 @@ bool Board::checkCard(int index)
 QVector<Card> Board::getTable()
 {
     return _table;
+}
+
+int Board::getSteps()
+{
+    return _steps;
+}
+
+int Board::getScore()
+{
+    return _score;
 }
 
 void Board::shufflePictures()

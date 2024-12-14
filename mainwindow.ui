@@ -51,10 +51,13 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>10</y>
+       <y>20</y>
        <width>1131</width>
        <height>811</height>
       </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
      </property>
      <property name="frameShape">
       <enum>QFrame::Shape::StyledPanel</enum>
@@ -65,10 +68,10 @@
      <widget class="QWidget" name="gridLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>560</x>
         <y>320</y>
-        <width>261</width>
-        <height>281</height>
+        <width>251</width>
+        <height>261</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="MenuLayout">
@@ -173,61 +176,6 @@ QPushButton:pressed {
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QPushButton" name="ExitButton">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Freestyle Script</family>
-           <pointsize>36</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-    background-color: rgb(220, 20, 20); 
-    border: 8px solid rgb(170, 20, 20);
-    color: rgb(255, 255, 255);
-    border-radius: 25px; 
-    border-bottom: 8px solid rgb(120, 20, 20);
-    border-right: 8px solid rgb(120, 20, 20);	
-}
-
-QPushButton:hover {
-	background-color: rgb(200, 0, 0);
-	border: 8px solid rgb(150, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 25px;
-	border-bottom: 8px solid rgb(100, 0, 0);
-	border-right: 8px solid rgb(100, 0, 0);
-
-	background-color: qlineargradient(spread:pad, x1:0.530695, y1:0.63, x2:0.53, y2:1, stop:0 rgba(211, 7, 27, 255), stop:1 rgba(112, 0, 0, 255))
-
-}
-
-QPushButton:pressed {
-    background-color: rgb(150, 0, 0);
-    border: 8px solid rgb(120, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 25px;
-    border-bottom: 6px solid rgb(90, 0, 0);
-    border-right: 6px solid rgb(90, 0, 0);
-}
-</string>
-         </property>
-         <property name="text">
-          <string>Exit</string>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0">
         <widget class="QPushButton" name="SinglePlayerBtn">
          <property name="enabled">
@@ -321,13 +269,68 @@ QPushButton:pressed {
          </property>
         </widget>
        </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="ExitButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Freestyle Script</family>
+           <pointsize>33</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: rgb(220, 20, 20); 
+    border: 8px solid rgb(170, 20, 20);
+    color: rgb(255, 255, 255);
+    border-radius: 25px; 
+    border-bottom: 8px solid rgb(120, 20, 20);
+    border-right: 8px solid rgb(120, 20, 20);	
+}
+
+QPushButton:hover {
+	background-color: rgb(200, 0, 0);
+	border: 8px solid rgb(150, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 25px;
+	border-bottom: 8px solid rgb(100, 0, 0);
+	border-right: 8px solid rgb(100, 0, 0);
+
+	background-color: qlineargradient(spread:pad, x1:0.530695, y1:0.63, x2:0.53, y2:1, stop:0 rgba(211, 7, 27, 255), stop:1 rgba(112, 0, 0, 255))
+
+}
+
+QPushButton:pressed {
+    background-color: rgb(150, 0, 0);
+    border: 8px solid rgb(120, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 25px;
+    border-bottom: 6px solid rgb(90, 0, 0);
+    border-right: 6px solid rgb(90, 0, 0);
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Exit</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="gridLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>720</x>
-        <y>290</y>
+        <x>560</x>
+        <y>280</y>
         <width>251</width>
         <height>341</height>
        </rect>
@@ -405,11 +408,14 @@ QPushButton:pressed {
        <string>Back</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="GameNameLabel">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>140</y>
+        <x>400</x>
+        <y>110</y>
         <width>631</width>
         <height>161</height>
        </rect>
@@ -428,346 +434,439 @@ QPushButton:pressed {
      </widget>
     </widget>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QFrame" name="Info_board_frame">
     <property name="geometry">
      <rect>
-      <x>1210</x>
-      <y>10</y>
+      <x>1200</x>
+      <y>30</y>
       <width>171</width>
-      <height>851</height>
+      <height>321</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QFrame" name="widgets_frame_2">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>200</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>7</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background: transparent;</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
-       </property>
-       <widget class="QLabel" name="scoreBoard">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>110</y>
-          <width>131</width>
-          <height>41</height>
-         </rect>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>1000</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>7</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 103, 129);
+border-radius: 25px;
+</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QLabel" name="scoreBoard">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>120</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>IBeamCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0, 80, 100);
+border-radius: 10px;
+</string>
+     </property>
+     <property name="text">
+      <string> Score:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="stepsBoard">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>70</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>IBeamCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0, 80, 100);
+border-radius: 10px;
+</string>
+     </property>
+     <property name="text">
+      <string> Steps: </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="timeBoard">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>IBeamCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0, 80, 100);
+border-radius: 10px;
+</string>
+     </property>
+     <property name="text">
+      <string> Time: </string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>182</y>
+       <width>131</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="PlayButton_2">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
         <property name="font">
          <font>
           <pointsize>12</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
+          <stylestrategy>PreferDefault</stylestrategy>
          </font>
         </property>
         <property name="cursor">
-         <cursorShape>IBeamCursor</cursorShape>
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
+        <property name="tabletTracking">
+         <bool>false</bool>
+        </property>
+        <property name="acceptDrops">
+         <bool>false</bool>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: rgb(220, 20, 20); 
+    border: 8px solid rgb(170, 20, 20);
+    color: rgb(255, 255, 255);
+    border-radius: 15px; 
+    border-bottom: 8px solid rgb(120, 20, 20);
+    border-right: 8px solid rgb(120, 20, 20);
+}
+
+QPushButton:hover {
+	background-color: rgb(200, 0, 0);
+	border: 8px solid rgb(150, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+	border-bottom: 8px solid rgb(100, 0, 0);
+	border-right: 8px solid rgb(100, 0, 0);
+
+	background-color: qlineargradient(spread:pad, x1:0.530695, y1:0.63, x2:0.53, y2:1, stop:0 rgba(211, 7, 27, 255), stop:1 rgba(112, 0, 0, 255))
+
+}
+
+QPushButton:pressed {
+    background-color: rgb(150, 0, 0);
+    border: 8px solid rgb(120, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+    border-bottom: 6px solid rgb(90, 0, 0);
+    border-right: 6px solid rgb(90, 0, 0);
+}
+
+</string>
         </property>
         <property name="text">
-         <string>Score:</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::AudioVolumeHigh"/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>false</bool>
+        </property>
+        <property name="autoRepeatDelay">
+         <number>300</number>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
         </property>
        </widget>
-       <widget class="QLabel" name="stepsBoard">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>60</y>
-          <width>131</width>
-          <height>41</height>
-         </rect>
+      </item>
+      <item>
+       <widget class="QPushButton" name="PlayButton_3">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
         <property name="font">
          <font>
           <pointsize>12</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
+          <stylestrategy>PreferDefault</stylestrategy>
          </font>
         </property>
         <property name="cursor">
-         <cursorShape>IBeamCursor</cursorShape>
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
+        <property name="tabletTracking">
+         <bool>false</bool>
+        </property>
+        <property name="acceptDrops">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: rgb(220, 20, 20); 
+    border: 8px solid rgb(170, 20, 20);
+    color: rgb(255, 255, 255);
+    border-radius: 15px; 
+    border-bottom: 8px solid rgb(120, 20, 20);
+    border-right: 8px solid rgb(120, 20, 20);	
+}
+
+QPushButton:hover {
+	background-color: rgb(200, 0, 0);
+	border: 8px solid rgb(150, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+	border-bottom: 8px solid rgb(100, 0, 0);
+	border-right: 8px solid rgb(100, 0, 0);
+
+	background-color: qlineargradient(spread:pad, x1:0.530695, y1:0.63, x2:0.53, y2:1, stop:0 rgba(211, 7, 27, 255), stop:1 rgba(112, 0, 0, 255))
+
+}
+
+QPushButton:pressed {
+    background-color: rgb(150, 0, 0);
+    border: 8px solid rgb(120, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+    border-bottom: 6px solid rgb(90, 0, 0);
+    border-right: 6px solid rgb(90, 0, 0);
+}
+
+</string>
         </property>
         <property name="text">
-         <string>Steps: </string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::AudioCard"/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>false</bool>
+        </property>
+        <property name="autoRepeatDelay">
+         <number>300</number>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
         </property>
        </widget>
-       <widget class="QLabel" name="timeBoard">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>10</y>
-          <width>131</width>
-          <height>41</height>
-         </rect>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>250</y>
+       <width>131</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="RestartButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
         <property name="font">
          <font>
-          <pointsize>12</pointsize>
-          <italic>true</italic>
+          <family>Freestyle Script</family>
+          <pointsize>28</pointsize>
           <bold>true</bold>
          </font>
         </property>
         <property name="cursor">
-         <cursorShape>IBeamCursor</cursorShape>
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: rgb(220, 20, 20); 
+    border: 8px solid rgb(170, 20, 20);
+    color: rgb(255, 255, 255);
+    border-radius: 15px; 
+    border-bottom: 8px solid rgb(120, 20, 20);
+    border-right: 8px solid rgb(120, 20, 20);	
+}
+
+QPushButton:hover {
+	background-color: rgb(200, 0, 0);
+	border: 8px solid rgb(150, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+	border-bottom: 8px solid rgb(100, 0, 0);
+	border-right: 8px solid rgb(100, 0, 0);
+
+	background-color: qlineargradient(spread:pad, x1:0.530695, y1:0.63, x2:0.53, y2:1, stop:0 rgba(211, 7, 27, 255), stop:1 rgba(112, 0, 0, 255))
+
+}
+
+QPushButton:pressed {
+    background-color: rgb(150, 0, 0);
+    border: 8px solid rgb(120, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+    border-bottom: 6px solid rgb(90, 0, 0);
+    border-right: 6px solid rgb(90, 0, 0);
+}
+</string>
         </property>
         <property name="text">
-         <string>Time: </string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::SystemReboot"/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
         </property>
        </widget>
-      </widget>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QPushButton" name="PlayButton_2">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <stylestrategy>PreferDefault</stylestrategy>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="mouseTracking">
-          <bool>true</bool>
-         </property>
-         <property name="tabletTracking">
-          <bool>false</bool>
-         </property>
-         <property name="acceptDrops">
-          <bool>false</bool>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-    background-color: rgb(220, 20, 20); 
-    border: 8px solid rgb(170, 20, 20);
-    color: rgb(255, 255, 255);
-    border-radius: 15px; 
-    border-bottom: 8px solid rgb(120, 20, 20);
-    border-right: 8px solid rgb(120, 20, 20);	
-
-	image: url(:/Buttons/Assets/images/icons8-sound-100.png)
-}
-
-QPushButton:hover {
-	background-color: rgb(200, 0, 0);
-	border: 8px solid rgb(150, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 15px;
-	border-bottom: 8px solid rgb(100, 0, 0);
-	border-right: 8px solid rgb(100, 0, 0);
-
-	background-color: qlineargradient(spread:pad, x1:0.530695, y1:0.63, x2:0.53, y2:1, stop:0 rgba(211, 7, 27, 255), stop:1 rgba(112, 0, 0, 255))
-
-}
-
-QPushButton:pressed {
-    background-color: rgb(150, 0, 0);
-    border: 8px solid rgb(120, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 15px;
-    border-bottom: 6px solid rgb(90, 0, 0);
-    border-right: 6px solid rgb(90, 0, 0);
-}
-
-</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-         <property name="autoRepeat">
-          <bool>false</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>false</bool>
-         </property>
-         <property name="autoRepeatDelay">
-          <number>300</number>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-         <property name="default">
-          <bool>false</bool>
-         </property>
-         <property name="flat">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="PlayButton_3">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <stylestrategy>PreferDefault</stylestrategy>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="mouseTracking">
-          <bool>true</bool>
-         </property>
-         <property name="tabletTracking">
-          <bool>false</bool>
-         </property>
-         <property name="acceptDrops">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-    background-color: rgb(220, 20, 20); 
-    border: 8px solid rgb(170, 20, 20);
-    color: rgb(255, 255, 255);
-    border-radius: 15px; 
-    border-bottom: 8px solid rgb(120, 20, 20);
-    border-right: 8px solid rgb(120, 20, 20);	
-
-	image: url(:/Buttons/Assets/images/icons8-music-96.png);
-}
-
-QPushButton:hover {
-	background-color: rgb(200, 0, 0);
-	border: 8px solid rgb(150, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 15px;
-	border-bottom: 8px solid rgb(100, 0, 0);
-	border-right: 8px solid rgb(100, 0, 0);
-
-	background-color: qlineargradient(spread:pad, x1:0.530695, y1:0.63, x2:0.53, y2:1, stop:0 rgba(211, 7, 27, 255), stop:1 rgba(112, 0, 0, 255))
-
-}
-
-QPushButton:pressed {
-    background-color: rgb(150, 0, 0);
-    border: 8px solid rgb(120, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 15px;
-    border-bottom: 6px solid rgb(90, 0, 0);
-    border-right: 6px solid rgb(90, 0, 0);
-}
-
-</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-         <property name="autoRepeat">
-          <bool>false</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>false</bool>
-         </property>
-         <property name="autoRepeatDelay">
-          <number>300</number>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-         <property name="default">
-          <bool>false</bool>
-         </property>
-         <property name="flat">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Orientation::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Policy::Preferred</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>514</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QPushButton" name="RestartButton">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Freestyle Script</family>
-           <pointsize>28</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
+      </item>
+      <item>
+       <widget class="QPushButton" name="HomeButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>Freestyle Script</family>
+          <pointsize>28</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
     background-color: rgb(220, 20, 20); 
     border: 8px solid rgb(170, 20, 20);
     color: rgb(255, 255, 255);
@@ -797,91 +896,23 @@ QPushButton:pressed {
     border-right: 6px solid rgb(90, 0, 0);
 }
 </string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset theme="QIcon::ThemeIcon::SystemReboot"/>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>40</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="flat">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="HomeButton">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Freestyle Script</family>
-           <pointsize>28</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-    background-color: rgb(220, 20, 20); 
-    border: 8px solid rgb(170, 20, 20);
-    color: rgb(255, 255, 255);
-    border-radius: 15px; 
-    border-bottom: 8px solid rgb(120, 20, 20);
-    border-right: 8px solid rgb(120, 20, 20);	
-}
-
-QPushButton:hover {
-	background-color: rgb(200, 0, 0);
-	border: 8px solid rgb(150, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 15px;
-	border-bottom: 8px solid rgb(100, 0, 0);
-	border-right: 8px solid rgb(100, 0, 0);
-
-	background-color: qlineargradient(spread:pad, x1:0.530695, y1:0.63, x2:0.53, y2:1, stop:0 rgba(211, 7, 27, 255), stop:1 rgba(112, 0, 0, 255))
-
-}
-
-QPushButton:pressed {
-    background-color: rgb(150, 0, 0);
-    border: 8px solid rgb(120, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 15px;
-    border-bottom: 6px solid rgb(90, 0, 0);
-    border-right: 6px solid rgb(90, 0, 0);
-}
-</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset theme="QIcon::ThemeIcon::SystemLogOut"/>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>40</width>
-           <height>40</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::GoHome"/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
