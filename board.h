@@ -12,30 +12,42 @@
 class Board
 {
 public:
-    Board(int height, int width);
-    void updateBoard();
+    Board(int height, int width, bool isTwoPlayer = false);
     bool checkCard(int index);
+    bool winCheck();
+    void updateBoard(); // chgitem xi em grel
+
     QVector<Card> getTable();
-    int getSteps();
-    int getScore();
+    int getSteps() const;
+    int getScore() const;
+    int firstPlayerScore() const;
+    int secondPlayerScore() const;
+    int getPlayerTurn() const;
 
 // signals:
 //     void waitCardCooldown();
 
 
+
+
 private:
     void shufflePictures();
+    void calculateScore();
+    void switchTurn();
 
 private:
     QVector<Card> _table;
+    int _size;
     int _firstChosenCardIndex;
 
     int _score = 0;
     int _steps = 0;
-    int cooldownTime = 900;
-    QTimer _timer;
 
-    int _size;
+    bool _isTwoPlayer;
+    int _firstPlayerScore;
+    int _secondPlayerScore;
+    int _playerTurn;
+
 };
 
 #endif // BOARD_H

@@ -5,6 +5,7 @@
 
 
 Controller::Controller() {
+    _board = nullptr;
     _window = new MainWindow();
 
     connect(_window, &MainWindow::startGame, this, &Controller::handleStartCmd);
@@ -14,22 +15,22 @@ Controller::Controller() {
 
     _window->show();
 
+
     // connect(_board, &Board::waitForCooldown, this, &Controller::handleCooldown);
     // connect(_board, &Board::sendSteps, this, &Controller::updateStepsValue);
 }
 
-void Controller::startSinglePlayer()
+void Controller::startGame()
 {
-    // if (_board != nullptr) {
-    //     delete _board;
-    // }
-    _board = new Board(_height, _width);
-
-    // connect(_board, &Board::waitCardCooldown, this, &Controller::handleCooldown);
+    if (_board != nullptr) {
+        delete _board;
+    }
+    _board = new Board(_height, _width, _isTwoPlayer);
 
     _window->setGameSize(_height, _width);
     _window->initializeButtons(_board->getTable());
-    _window->gameStartFunction();
+
+    _window->gameStartFunction(_isTwoPlayer);
 }
 
 void Controller::handleStartCmd(EGameMode gameMode, EGameSize gameSize)
@@ -61,33 +62,38 @@ void Controller::handleStartCmd(EGameMode gameMode, EGameSize gameSize)
         _width = 5;
     }
 
-    _gameMode = gameMode;
-    if (_gameMode == EGameMode::SINGLEPLAYER) {
-        startSinglePlayer();
+    if (gameMode == EGameMode::SINGLEPLAYER) {
+        _isTwoPlayer = false;
     }
     else {
-
+        _isTwoPlayer = true;
     }
+
+    startGame();
 }
 
 void Controller::handleGameRestartCmd()
 {
-    if (_gameMode == EGameMode::SINGLEPLAYER) {
-        startSinglePlayer();
-    }
-    else {
-
-    }
+    startGame();
 }
 
 void Controller::handleClick(int buttonIndex)
 {
     if (_board->checkCard(buttonIndex)) {
         _window->cardResetCooldown();
-
     }
-    _window->updateStepsAndScore(_board->getSteps(), _board->getScore());
 
+    if (_isTwoPlayer) {
+        _window->updatePlayersScores(_board->firstPlayerScore(), _board->secondPlayerScore());
+        _window->updateTurnPanel(_board->getPlayerTurn());
+    }
+    else {
+        _window->updateScorePanels(_board->getSteps(), _board->getScore());
+    }
+
+    if(_board->winCheck()) {
+        _window->winGame();
+    }
 }
 
 void Controller::handleScreenUpdateRequest()
@@ -99,5 +105,7 @@ void Controller::handleCooldown()
 {
     _window->cardResetCooldown();
 }
+
+
 
 

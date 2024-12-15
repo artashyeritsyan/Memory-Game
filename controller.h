@@ -21,11 +21,11 @@ private slots:
     void handleCooldown();
 
 private:
-    void startSinglePlayer();
+    void startGame();
     void restartGame();
 
 private:
-    EGameMode _gameMode;
+    bool _isTwoPlayer;;
     int _height;
     int _width;
 

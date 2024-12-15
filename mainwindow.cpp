@@ -43,6 +43,17 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    initMenu();
+
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::initMenu()
+{
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::updateTime);
     ui->timeBoard->setText(" Time: " + QString::number(elapsedTime) + "s");
@@ -58,12 +69,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     hideGameSizeMenu();
     hideInfoBoard();
-
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
+    hideWinGameFrame();
 }
 
 void MainWindow::initializeButtons(QVector<Card> table)
@@ -93,15 +99,20 @@ void MainWindow::setGameSize(int height, int width)
     _width = width;
 }
 
-void MainWindow::gameStartFunction() {
+void MainWindow::gameStartFunction(bool isTwoPlayer) {
     hideGameSizeMenu();
     hideMenuButtons();
     showInfoBoard();
     ui->GameNameLabel->hide();
     ui->widgets_frame->setStyleSheet("QFrame {background-color: qradialgradient(spread:pad, cx:0.2, cy:0.2, radius:0.477, fx:0.499775, fy:0.5, stop:0 rgba(1, 131, 165, 255), stop:0.99061 rgba(0, 103, 129, 255)); border-radius: 25px;  }");
 
-    ui->scoreBoard->setText(" Score: " + QString::number(score));
-    ui->stepsBoard->setText(" Steps: " + QString::number(steps));
+    if (!isTwoPlayer) {
+        updateScorePanels(0, 0);
+    }
+    else {
+        updatePlayersScores(0, 0);
+        updateTurnPanel(1);
+    }
 
     timer->start(1000);
     elapsedTime = -1;
@@ -140,10 +151,37 @@ void MainWindow::cardResetCooldown()
             });
 }
 
-void MainWindow::updateStepsAndScore(int steps, int score)
+void MainWindow::winGame()
 {
-    ui->scoreBoard->setText(" Score: " + QString::number(score));
-    ui->stepsBoard->setText(" Steps: " + QString::number(steps));
+    ui->widgets_frame->setStyleSheet("");
+    removeGameCards();
+    hideInfoBoard();
+    showWinGameFrame();
+}
+
+void MainWindow::updateScorePanels(int steps, int score)
+{
+    ui->scorePanel1->setText(" Steps: " + QString::number(steps));
+    // ui->scorePanel2->setText(" Score: " + QString::number(score));
+}
+
+void MainWindow::updatePlayersScores(int score1, int score2)
+{
+    ui->scorePanel1->setText(" 1st Player: " + QString::number(score1));
+    ui->scorePanel2->setText(" 2nd Player: " + QString::number(score2));
+}
+
+void MainWindow::updateTurnPanel(int playerTurn) {
+    ui->scorePanel2->show();
+    ui->turnPanel->show();
+
+    if (playerTurn == 1) {
+        ui->turnPanel->setText("1st Player`s turn ");
+    }
+    else {
+        ui->turnPanel->setText("2nd Player`s turn ");
+    }
+
 }
 
 void MainWindow::create_layout() {
@@ -294,7 +332,7 @@ void MainWindow::enableAllButtons()
     /// TODO: Call updateScreen function and give the table to update screen
 }
 
-void MainWindow::removeGameWidgets()
+void MainWindow::removeGameCards()
 {
     for (int i = _buttons.size() - 1; i >= 0 ; --i) {
         _buttons[i]->deleteLater();
@@ -310,10 +348,17 @@ void MainWindow::removeGameWidgets()
 void MainWindow::exitToMenu()
 {
     ui->widgets_frame->setStyleSheet("");
-    removeGameWidgets();
+    removeGameCards();
     hideInfoBoard();
     showMenuButtons();
     ui->GameNameLabel->show();
+    hideWinGameFrame();
+}
+
+void MainWindow::gameRestartManager()
+{
+    exitToMenu();
+    emit restartGame();
 }
 
 
@@ -439,14 +484,30 @@ void MainWindow::showGameSizeMenu()
 
 void MainWindow::hideInfoBoard()
 {
-    // hideWidgetsInLayout(ui->Info_board_frame, true);
     ui->Info_board_frame->hide();
+    ui->scorePanel2->hide();
+    ui->turnPanel->hide();
 }
 
 void MainWindow::showInfoBoard()
 {
     // hideWidgetsInLayout(ui->Info_board_frame, false);
     ui->Info_board_frame->show();
+}
+
+void MainWindow::hideWinGameFrame()
+{
+    ui->WinFrame->hide();
+}
+
+void MainWindow::showWinGameFrame()
+{
+    ui->WinFrame->move(320, 100);
+    ui->WinFrame->show();
+    ui->WinFrame->raise();
+    // ui->ScoreSign->setText(ui->scoreBoard->text());
+    ui->StepsSign->setText(ui->scorePanel1->text());
+    ui->TimeSign->setText(ui->timeBoard->text());
 }
 
 void MainWindow::hideWidgetsInLayout(QLayout *layout, bool isHide)
@@ -478,16 +539,26 @@ void MainWindow::on_BackFromSizeMenu_clicked()
     hideGameSizeMenu();
 }
 
+void MainWindow::on_RestartButton_clicked()
+{
+    gameRestartManager();
+}
+
+
+void MainWindow::on_RestartButton_2_clicked()
+{
+    gameRestartManager();
+}
 
 void MainWindow::on_HomeButton_clicked()
 {
     exitToMenu();
 }
 
-
-void MainWindow::on_RestartButton_clicked()
+void MainWindow::on_HomeButton_2_clicked()
 {
     exitToMenu();
-    emit restartGame();
 }
+
+
 

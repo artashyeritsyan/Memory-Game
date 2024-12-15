@@ -21,14 +21,17 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void gameStartFunction();
+    void gameStartFunction(bool isTwoPlayer);
     void setGameSize(int height, int width);
     void initializeButtons(QVector<Card> table);
     void updateGameScreen(QVector<Card> table);
     void cardResetCooldown();
+    void winGame();
 
-    void updateStepsAndScore(int steps, int score);
-    void uupdateScore(int score);
+    void updateScorePanels(int steps, int score);
+    void updatePlayersScores(int score1, int score2);
+    void updateTurnPanel(int playerTurn);
+    // void updateScore(int score);
 
 
 private slots:
@@ -46,7 +49,8 @@ private slots:
     void onAnyButtonClicked(bool checked);
     void on_HomeButton_clicked();
     void on_RestartButton_clicked();
-
+    void on_RestartButton_2_clicked();
+    void on_HomeButton_2_clicked();
 
 signals:
     void startGame(EGameMode gameMode, EGameSize gameSize);
@@ -56,6 +60,7 @@ signals:
     void requestScreenUpdate();
 
 private:
+    void initMenu();
     void create_layout();
     void updateTime();
 
@@ -70,22 +75,23 @@ private:
 
     void hideInfoBoard();
     void showInfoBoard();
-    // useless function
-    void hideWidgetsInLayout(QLayout *layout, bool isHide = true);
+
+    void hideWinGameFrame();
+    void showWinGameFrame();
 
     int findButtonIndex(QPushButton* button);
-    void removeGameWidgets();
+    void removeGameCards();
     void exitToMenu();
+    void gameRestartManager();
     void endGame();
 
+    // useless function
+    void hideWidgetsInLayout(QLayout *layout, bool isHide = true);
     // void connectSizeMenuButtons();
 
 private:
     int _height;
     int _width;
-
-    int score = 0;
-    int steps = 0;
 
     QVBoxLayout* _buttonsLayout;
     QVector<QPushButton*> _buttons;
