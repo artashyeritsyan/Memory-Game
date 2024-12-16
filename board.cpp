@@ -95,9 +95,8 @@ void Board::calculateScore()
         else
             ++_secondPlayerScore;
     }
-    else {
-        ++_score;
-    }
+
+    ++_score;
 }
 
 void Board::switchTurn()

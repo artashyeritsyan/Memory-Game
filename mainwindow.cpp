@@ -42,9 +42,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    // ui->centralwidget->setGeometry(0, 0, 1400, 960);
+    // ui->centralwidget->setFixedSize(1000, 960)
 
     initMenu();
-
 }
 
 MainWindow::~MainWindow()
@@ -208,12 +209,10 @@ void MainWindow::onAnyButtonClicked(bool checked) {
         button->setChecked(true);
         return;
     }
-// qt.core.qmetaobject.connectslotsbyname: QMetaObject::connectSlotsByName: No matching signal for on_anyButton_clicked(bool)
     int buttonIndex = findButtonIndex(button);
     emit buttonClicked(buttonIndex);
 
         qDebug() << "buttonClicked works!!";
-
     // bool isSecond = false;
 
     // if (checked) {
@@ -284,24 +283,6 @@ int MainWindow::findButtonIndex(QPushButton *button)
     }
     return 0;
 }
-
-// void MainWindow::choose_card(int index) {
-
-// }
-
-// void MainWindow::compare_cards(int index_1, int index_2) {
-
-// }
-
-// void MainWindow::update_button_image(QPushButton* button) {
-//     button->setChecked(false);
-// }
-
-// void MainWindow::returnConditions(QVector<bool> conditions) {
-//     for(int i = 0; i < _buttons.size(); ++i) {
-//         _buttons[i]->setEnabled(conditions[i]);
-//     }
-// }
 
 void MainWindow::updateTime() {
     ++elapsedTime;
@@ -487,6 +468,8 @@ void MainWindow::hideInfoBoard()
     ui->Info_board_frame->hide();
     ui->scorePanel2->hide();
     ui->turnPanel->hide();
+
+    // ui->infoPanelLayout->
 }
 
 void MainWindow::showInfoBoard()

@@ -11,6 +11,7 @@ class Controller : public QObject {
 
 public:
     Controller();
+    ~Controller();
 
 private slots:
     void handleStartCmd(EGameMode gameMode, EGameSize gameSize);

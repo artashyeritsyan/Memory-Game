@@ -1,12 +1,10 @@
 #include "controller.h"
 
-
-// Controller::Controller() {}
-
-
 Controller::Controller() {
     _board = nullptr;
     _window = new MainWindow();
+
+    _window->setFixedSize(1420, 940);
 
     connect(_window, &MainWindow::startGame, this, &Controller::handleStartCmd);
     connect(_window, &MainWindow::restartGame, this, &Controller::handleGameRestartCmd);
@@ -15,9 +13,13 @@ Controller::Controller() {
 
     _window->show();
 
-
     // connect(_board, &Board::waitForCooldown, this, &Controller::handleCooldown);
     // connect(_board, &Board::sendSteps, this, &Controller::updateStepsValue);
+}
+
+Controller::~Controller()
+{
+    delete _window;
 }
 
 void Controller::startGame()
