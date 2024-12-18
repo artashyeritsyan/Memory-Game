@@ -213,65 +213,6 @@ void MainWindow::onAnyButtonClicked(bool checked) {
     emit buttonClicked(buttonIndex);
 
         qDebug() << "buttonClicked works!!";
-    // bool isSecond = false;
-
-    // if (checked) {
-    //     QPushButton* secondButton;
-
-    //     for (int i = 0; i < (_height * _width); ++i) {
-    //         if (_buttons[i]->isChecked() && _buttons[i]->isEnabled() && _buttons[i] != button) {
-    //             secondButton = _buttons[i];
-    //             isSecond = true;
-
-    //             break;
-    //         }
-    //     }
-
-        // if (isSecond) {
-
-        //     QVector<bool> conditions(_buttons.size());
-
-        //     if (button->styleSheet() == secondButton->styleSheet()) {
-        //         ui->scoreBoard->setText("Score: " + QString::number(++score));
-
-        //         button->setEnabled(false);
-        //         secondButton->setEnabled(false);
-
-        //         // if (score == _buttons.size()/2) {
-        //         if (score >= 14) {
-        //             delete timer;
-        //             auto messageBox = new QMessageBox;
-        //             messageBox->setWindowTitle("Congratulations");
-        //             // QPixmap iconPixmap(":/assets/images/IMG_3970.JPG");
-        //             // message->setIconPixmap(iconPixmap);
-        //             messageBox->setText("🎉🎉 Congratulations! You Win 🎉🎉   ");
-        //             messageBox->setFixedSize(300, 200);
-        //             // message->show();
-        //             messageBox->exec();
-
-        //         }
-        //     }
-        //     else {
-                // QTimer::singleShot(cardCooldown, this, [this, button]() {
-                //     this->update_button_image(button);
-                // });
-        //         QTimer::singleShot(cardCooldown, this, [this, secondButton]() {
-        //             this->update_button_image(secondButton);
-        //         });
-        //     }
-        //     for (int i = 0; i < _buttons.size(); ++i) {
-        //         conditions[i] = _buttons[i]->isEnabled();
-        //         _buttons[i]->setEnabled(false);
-        //     }
-
-        //     ui->stepsBoard->setText("Steps: " + QString::number(++steps));
-
-        //     QTimer::singleShot(cardCooldown, this, [this, conditions]() {
-        //         this->returnConditions(conditions);
-        //     });
-
-        // }
-    // }
 }
 
 int MainWindow::findButtonIndex(QPushButton *button)
@@ -488,31 +429,24 @@ void MainWindow::showWinGameFrame()
     ui->WinFrame->move(320, 100);
     ui->WinFrame->show();
     ui->WinFrame->raise();
-    // ui->ScoreSign->setText(ui->scoreBoard->text());
-    ui->StepsSign->setText(ui->scorePanel1->text());
     ui->TimeSign->setText(ui->timeBoard->text());
+    ui->WinSign->setText("You Win");
+    ui->StepsSign->setText(ui->scorePanel1->text());
 }
 
-void MainWindow::hideWidgetsInLayout(QLayout *layout, bool isHide)
+void MainWindow::setWinnerInfo(int winnerId, int score)
 {
-    if (!layout) return;
-
-    for (int i = 0; i < layout->count(); ++i) {
-        QLayoutItem *item = layout->itemAt(i);
-        if (!item) continue;
-
-        if (auto widget = item->widget()) {
-            if (isHide) {
-                item->widget()->hide();
-            }
-            else {
-                item->widget()->show();
-            }
-        }
-        else if (auto childLayout = item->layout()) {
-            hideWidgetsInLayout(childLayout, isHide);
-        }
+    if (winnerId == 0) {
+        ui->WinSign->setText("Draw");
     }
+    else if (winnerId == 1) {
+        ui->WinSign->setText("1st Player Win");
+    }
+    else {
+        ui->WinSign->setText("2nd Player Win");
+    }
+
+    ui->StepsSign->setText(" Score: " + QString::number(score));
 }
 
 

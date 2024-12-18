@@ -20,6 +20,8 @@ private slots:
     void handleScreenUpdateRequest();
 
     void handleCooldown();
+    int requestWinnerId();
+    int requestPlayerScore(int id);
 
 private:
     void startGame();

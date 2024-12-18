@@ -31,7 +31,8 @@ public:
     void updateScorePanels(int steps, int score);
     void updatePlayersScores(int score1, int score2);
     void updateTurnPanel(int playerTurn);
-    // void updateScore(int score);
+    void setWinnerInfo(int winnerId, int score);
+
 
 
 private slots:
@@ -85,10 +86,6 @@ private:
     void gameRestartManager();
     void endGame();
 
-    // useless function
-    void hideWidgetsInLayout(QLayout *layout, bool isHide = true);
-    // void connectSizeMenuButtons();
-
 private:
     int _height;
     int _width;
@@ -98,7 +95,6 @@ private:
     QVector<QString> images;
 
     QTimer* timer;
-
     int elapsedTime = 0;
 
     EGameMode _gameMode;

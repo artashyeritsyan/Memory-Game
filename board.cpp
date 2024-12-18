@@ -116,6 +116,19 @@ int Board::getPlayerTurn() const
     return _playerTurn;
 }
 
+int Board::getWinnerId()
+{
+    if (_firstPlayerScore == _secondPlayerScore) {
+        return 0;
+    }
+    else if (_firstPlayerScore > _secondPlayerScore){
+        return 1;
+    }
+    else {
+        return 2;
+    }
+}
+
 int Board::firstPlayerScore() const
 {
     return _firstPlayerScore;

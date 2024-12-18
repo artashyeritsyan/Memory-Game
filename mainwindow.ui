@@ -442,8 +442,8 @@ gridline-color: rgb(170, 0, 0);</string>
       </property>
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>200</y>
+        <x>360</x>
+        <y>190</y>
         <width>681</width>
         <height>571</height>
        </rect>
@@ -668,9 +668,9 @@ QPushButton:pressed {
       <widget class="QLabel" name="WinSign">
        <property name="geometry">
         <rect>
-         <x>190</x>
+         <x>80</x>
          <y>100</y>
-         <width>351</width>
+         <width>531</width>
          <height>131</height>
         </rect>
        </property>
@@ -688,6 +688,9 @@ image: &quot;&quot;</string>
        </property>
        <property name="text">
         <string>You Win!!</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="StepsSign">
@@ -747,7 +750,7 @@ image: &quot;&quot;</string>
       <x>1200</x>
       <y>30</y>
       <width>181</width>
-      <height>381</height>
+      <height>301</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -784,7 +787,7 @@ border-radius: 25px;
        <x>20</x>
        <y>20</y>
        <width>141</width>
-       <height>341</height>
+       <height>261</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="infoPanelLayout">
@@ -938,225 +941,6 @@ color: red;</string>
          <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QPushButton" name="PlayButton_2">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-            <stylestrategy>PreferDefault</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="mouseTracking">
-           <bool>true</bool>
-          </property>
-          <property name="tabletTracking">
-           <bool>false</bool>
-          </property>
-          <property name="acceptDrops">
-           <bool>false</bool>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(220, 20, 20); 
-    border: 8px solid rgb(170, 20, 20);
-    color: rgb(255, 255, 255);
-    border-radius: 15px; 
-    border-bottom: 8px solid rgb(120, 20, 20);
-    border-right: 8px solid rgb(120, 20, 20);
-}
-
-QPushButton:hover {
-	background-color: rgb(200, 0, 0);
-	border: 8px solid rgb(150, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 15px;
-	border-bottom: 8px solid rgb(100, 0, 0);
-	border-right: 8px solid rgb(100, 0, 0);
-
-	background-color: qlineargradient(spread:pad, x1:0.530695, y1:0.63, x2:0.53, y2:1, stop:0 rgba(211, 7, 27, 255), stop:1 rgba(112, 0, 0, 255))
-
-}
-
-QPushButton:pressed {
-    background-color: rgb(150, 0, 0);
-    border: 8px solid rgb(120, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 15px;
-    border-bottom: 6px solid rgb(90, 0, 0);
-    border-right: 6px solid rgb(90, 0, 0);
-}
-
-</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset theme="QIcon::ThemeIcon::AudioVolumeHigh"/>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <property name="checked">
-           <bool>false</bool>
-          </property>
-          <property name="autoRepeat">
-           <bool>false</bool>
-          </property>
-          <property name="autoExclusive">
-           <bool>false</bool>
-          </property>
-          <property name="autoRepeatDelay">
-           <number>300</number>
-          </property>
-          <property name="autoDefault">
-           <bool>false</bool>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="PlayButton_3">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-            <stylestrategy>PreferDefault</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="mouseTracking">
-           <bool>true</bool>
-          </property>
-          <property name="tabletTracking">
-           <bool>false</bool>
-          </property>
-          <property name="acceptDrops">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(220, 20, 20); 
-    border: 8px solid rgb(170, 20, 20);
-    color: rgb(255, 255, 255);
-    border-radius: 15px; 
-    border-bottom: 8px solid rgb(120, 20, 20);
-    border-right: 8px solid rgb(120, 20, 20);	
-}
-
-QPushButton:hover {
-	background-color: rgb(200, 0, 0);
-	border: 8px solid rgb(150, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 15px;
-	border-bottom: 8px solid rgb(100, 0, 0);
-	border-right: 8px solid rgb(100, 0, 0);
-
-	background-color: qlineargradient(spread:pad, x1:0.530695, y1:0.63, x2:0.53, y2:1, stop:0 rgba(211, 7, 27, 255), stop:1 rgba(112, 0, 0, 255))
-
-}
-
-QPushButton:pressed {
-    background-color: rgb(150, 0, 0);
-    border: 8px solid rgb(120, 0, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 15px;
-    border-bottom: 6px solid rgb(90, 0, 0);
-    border-right: 6px solid rgb(90, 0, 0);
-}
-
-</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset theme="QIcon::ThemeIcon::AudioCard"/>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <property name="checked">
-           <bool>false</bool>
-          </property>
-          <property name="autoRepeat">
-           <bool>false</bool>
-          </property>
-          <property name="autoExclusive">
-           <bool>false</bool>
-          </property>
-          <property name="autoRepeatDelay">
-           <number>300</number>
-          </property>
-          <property name="autoDefault">
-           <bool>false</bool>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">

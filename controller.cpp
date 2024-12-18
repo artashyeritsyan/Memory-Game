@@ -12,9 +12,6 @@ Controller::Controller() {
     connect(_window, &MainWindow::requestScreenUpdate, this, &Controller::handleScreenUpdateRequest);
 
     _window->show();
-
-    // connect(_board, &Board::waitForCooldown, this, &Controller::handleCooldown);
-    // connect(_board, &Board::sendSteps, this, &Controller::updateStepsValue);
 }
 
 Controller::~Controller()
@@ -95,6 +92,15 @@ void Controller::handleClick(int buttonIndex)
 
     if(_board->winCheck()) {
         _window->winGame();
+
+        if (_isTwoPlayer) {
+            if(_board->getWinnerId()) {
+                _window->setWinnerInfo(_board->getWinnerId(), _board->firstPlayerScore());
+            }
+            else {
+                _window->setWinnerInfo(_board->getWinnerId(), _board->secondPlayerScore());
+            }
+        }
     }
 }
 
@@ -106,6 +112,21 @@ void Controller::handleScreenUpdateRequest()
 void Controller::handleCooldown()
 {
     _window->cardResetCooldown();
+}
+
+int Controller::requestWinnerId()
+{
+    return _board->getWinnerId();
+}
+
+int Controller::requestPlayerScore(int id)
+{
+    if (id == 1) {
+        return _board->firstPlayerScore();
+    }
+    else {
+        return _board->secondPlayerScore();
+    }
 }
 
 

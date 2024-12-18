@@ -13,18 +13,14 @@ SOURCES += \
     card.cpp \
     controller.cpp \
     main.cpp \
-    mainwindow.cpp \
-    menu.cpp \
-    screen.cpp
+    mainwindow.cpp
 
 HEADERS += \
     board.h \
     card.h \
     controller.h \
     enums.h \
-    mainwindow.h \
-    menu.h \
-    screen.h
+    mainwindow.h
 
 FORMS += \
     mainwindow.ui

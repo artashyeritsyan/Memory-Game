@@ -15,7 +15,6 @@ public:
     Board(int height, int width, bool isTwoPlayer = false);
     bool checkCard(int index);
     bool winCheck();
-    void updateBoard(); // chgitem xi em grel
 
     QVector<Card> getTable();
     int getSteps() const;
@@ -23,9 +22,7 @@ public:
     int firstPlayerScore() const;
     int secondPlayerScore() const;
     int getPlayerTurn() const;
-
-// signals:
-//     void waitCardCooldown();
+    int getWinnerId();
 
 private:
     void shufflePictures();
